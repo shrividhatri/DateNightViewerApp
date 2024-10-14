@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Night Viewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Date Night Options</h1>
+    <form id="dateNightForm">
+        <label for="dateNightSelect">Select a Date Night:</label>
+        <select id="dateNightSelect">
+            <!-- Options will be populated dynamically -->
+        </select>
+        <br><br>
+        <label for="date">Pick a Day:</label>
+        <input type="date" id="date" required>
+        <br><br>
+        <label for="time">Pick a Time:</label>
+        <input type="time" id="time" required>
+        <br><br>
+        <button type="submit">Select Date Night</button>
+    </form>
+    <p id="responseMessage"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
