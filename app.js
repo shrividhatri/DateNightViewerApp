@@ -1,10 +1,19 @@
-// Sample date ideas with descriptions
-const dateIdeas = [
-  { name: "Hiking", price: 0, distance: 10, time: 4, energy: "High", description: "A scenic hiking experience with beautiful views." },
-  { name: "Movie Night", price: 15, distance: 2, time: 2, energy: "Low", description: "Relax with a cozy movie night at your favorite theater." },
-  { name: "Cooking Class", price: 50, distance: 5, time: 3, energy: "Medium", description: "Learn new recipes and cooking techniques together." },
-  { name: "Beach Day", price: 0, distance: 15, time: 6, energy: "Medium", description: "Enjoy a sunny day at the beach with fun activities." },
-];
+let dateIdeas = [];
+
+// Fetch date ideas from the JSON file
+async function fetchDateIdeas() {
+  try {
+    const response = await fetch('dateIdeas.json');
+    if (response.ok) {
+      dateIdeas = await response.json();
+      sortAndFilterIdeas(); // Initial render with fetched data
+    } else {
+      console.error('Failed to fetch date ideas.');
+    }
+  } catch (error) {
+    console.error('Error fetching date ideas:', error);
+  }
+}
 
 // Function to render date ideas
 function renderDateIdeas(ideas) {
@@ -64,5 +73,5 @@ function sortAndFilterIdeas() {
   renderDateIdeas(filteredIdeas);
 }
 
-// Initial render
-renderDateIdeas(dateIdeas);
+// Initial fetch
+fetchDateIdeas();
