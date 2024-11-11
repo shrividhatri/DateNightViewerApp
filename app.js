@@ -3,7 +3,7 @@ let dateIdeas = [];
 // Fetch date ideas from the JSON file
 async function fetchDateIdeas() {
   try {
-    const response = await fetch('dateIdeas.json');
+    const response = await fetch('ideas.json');
     if (response.ok) {
       dateIdeas = await response.json();
       sortAndFilterIdeas(); // Initial render with fetched data
@@ -15,7 +15,7 @@ async function fetchDateIdeas() {
   }
 }
 
-// Function to render date ideas
+// Render the date ideas
 function renderDateIdeas(ideas) {
   const ideasContainer = document.getElementById("ideasContainer");
   ideasContainer.innerHTML = "";
@@ -24,11 +24,11 @@ function renderDateIdeas(ideas) {
     ideaCard.className = "idea-card";
     ideaCard.innerHTML = `
       <h2>${idea.name}</h2>
-      <p>Price: $${idea.price}</p>
-      <p>Distance: ${idea.distance} miles</p>
+      <p>Price: Rs ${idea.price}</p>
+      <p>Distance: ${idea.distance} km</p>
       <p>Time: ${idea.time} hours</p>
       <p>Energy: ${idea.energy}</p>
-      <button onclick="toggleDescription(${index})">Description</button>
+      <button onclick="toggleDescription(${index})">Show Description</button>
       <div class="description-box" id="description-${index}">${idea.description}</div>
     `;
     ideasContainer.appendChild(ideaCard);
@@ -38,28 +38,29 @@ function renderDateIdeas(ideas) {
 // Toggle description visibility
 function toggleDescription(index) {
   const descriptionBox = document.getElementById(`description-${index}`);
-  descriptionBox.style.display = descriptionBox.style.display === "block" ? "none" : "block";
+  if (descriptionBox.style.display === "block") {
+    descriptionBox.style.display = "none";
+  } else {
+    descriptionBox.style.display = "block";
+  }
 }
 
 // Sort and filter function
 function sortAndFilterIdeas() {
   const sortBy = document.getElementById("sort").value;
-  const minTime = document.getElementById("minTime").value;
-  const maxTime = document.getElementById("maxTime").value;
-  const minPrice = document.getElementById("minPrice").value;
-  const maxPrice = document.getElementById("maxPrice").value;
+  const minTime = parseFloat(document.getElementById("minTime").value) || 0;
+  const maxTime = parseFloat(document.getElementById("maxTime").value) || Infinity;
+  const minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
+  const maxPrice = parseFloat(document.getElementById("maxPrice").value) || Infinity;
   const energyFilter = document.getElementById("energyFilter").value;
-  const minDistance = document.getElementById("minDistance").value;
-  const maxDistance = document.getElementById("maxDistance").value;
+  const minDistance = parseFloat(document.getElementById("minDistance").value) || 0;
+  const maxDistance = parseFloat(document.getElementById("maxDistance").value) || Infinity;
 
   let filteredIdeas = dateIdeas.filter(idea => {
-    return (!minTime || idea.time >= minTime) &&
-           (!maxTime || idea.time <= maxTime) &&
-           (!minPrice || idea.price >= minPrice) &&
-           (!maxPrice || idea.price <= maxPrice) &&
-           (!energyFilter || idea.energy === energyFilter) &&
-           (!minDistance || idea.distance >= minDistance) &&
-           (!maxDistance || idea.distance <= maxDistance);
+    return (idea.time >= minTime && idea.time <= maxTime) &&
+           (idea.price >= minPrice && idea.price <= maxPrice) &&
+           (idea.distance >= minDistance && idea.distance <= maxDistance) &&
+           (!energyFilter || idea.energy === energyFilter);
   });
 
   filteredIdeas = filteredIdeas.sort((a, b) => {
