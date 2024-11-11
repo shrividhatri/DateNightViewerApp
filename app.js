@@ -15,7 +15,7 @@ async function fetchDateIdeas() {
   }
 }
 
-// Render the date ideas
+// Function to render date ideas
 function renderDateIdeas(ideas) {
   const ideasContainer = document.getElementById("ideasContainer");
   ideasContainer.innerHTML = "";
@@ -28,7 +28,7 @@ function renderDateIdeas(ideas) {
       <p>Distance: ${idea.distance} miles</p>
       <p>Time: ${idea.time} hours</p>
       <p>Energy: ${idea.energy}</p>
-      <button onclick="toggleDescription(${index})">Show Description</button>
+      <button onclick="toggleDescription(${index})">Description</button>
       <div class="description-box" id="description-${index}">${idea.description}</div>
     `;
     ideasContainer.appendChild(ideaCard);
@@ -38,29 +38,28 @@ function renderDateIdeas(ideas) {
 // Toggle description visibility
 function toggleDescription(index) {
   const descriptionBox = document.getElementById(`description-${index}`);
-  if (descriptionBox.style.display === "block") {
-    descriptionBox.style.display = "none";
-  } else {
-    descriptionBox.style.display = "block";
-  }
+  descriptionBox.style.display = descriptionBox.style.display === "block" ? "none" : "block";
 }
 
 // Sort and filter function
 function sortAndFilterIdeas() {
   const sortBy = document.getElementById("sort").value;
-  const minTime = parseFloat(document.getElementById("minTime").value) || 0;
-  const maxTime = parseFloat(document.getElementById("maxTime").value) || Infinity;
-  const minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
-  const maxPrice = parseFloat(document.getElementById("maxPrice").value) || Infinity;
+  const minTime = document.getElementById("minTime").value;
+  const maxTime = document.getElementById("maxTime").value;
+  const minPrice = document.getElementById("minPrice").value;
+  const maxPrice = document.getElementById("maxPrice").value;
   const energyFilter = document.getElementById("energyFilter").value;
-  const minDistance = parseFloat(document.getElementById("minDistance").value) || 0;
-  const maxDistance = parseFloat(document.getElementById("maxDistance").value) || Infinity;
+  const minDistance = document.getElementById("minDistance").value;
+  const maxDistance = document.getElementById("maxDistance").value;
 
   let filteredIdeas = dateIdeas.filter(idea => {
-    return (idea.time >= minTime && idea.time <= maxTime) &&
-           (idea.price >= minPrice && idea.price <= maxPrice) &&
-           (idea.distance >= minDistance && idea.distance <= maxDistance) &&
-           (!energyFilter || idea.energy === energyFilter);
+    return (!minTime || idea.time >= minTime) &&
+           (!maxTime || idea.time <= maxTime) &&
+           (!minPrice || idea.price >= minPrice) &&
+           (!maxPrice || idea.price <= maxPrice) &&
+           (!energyFilter || idea.energy === energyFilter) &&
+           (!minDistance || idea.distance >= minDistance) &&
+           (!maxDistance || idea.distance <= maxDistance);
   });
 
   filteredIdeas = filteredIdeas.sort((a, b) => {
