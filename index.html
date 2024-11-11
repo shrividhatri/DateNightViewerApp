@@ -9,18 +9,42 @@
 <body>
   <div class="container">
     <h1>Date Ideas</h1>
-    <div class="sort-options">
-      <label for="sort">Sort by:</label>
-      <select id="sort" onchange="sortIdeas()">
+
+    <!-- Filter Options -->
+    <div class="filters">
+      <label>Sort by:</label>
+      <select id="sort" onchange="sortAndFilterIdeas()">
         <option value="name">Name</option>
         <option value="price">Price</option>
         <option value="distance">Distance</option>
         <option value="time">Time</option>
         <option value="energy">Energy Level</option>
       </select>
+
+      <label>Time Range (hours):</label>
+      <input type="number" id="minTime" placeholder="Min" oninput="sortAndFilterIdeas()">
+      <input type="number" id="maxTime" placeholder="Max" oninput="sortAndFilterIdeas()">
+
+      <label>Cost Range ($):</label>
+      <input type="number" id="minPrice" placeholder="Min" oninput="sortAndFilterIdeas()">
+      <input type="number" id="maxPrice" placeholder="Max" oninput="sortAndFilterIdeas()">
+
+      <label>Energy Level:</label>
+      <select id="energyFilter" onchange="sortAndFilterIdeas()">
+        <option value="">All</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <label>Distance Range (miles):</label>
+      <input type="number" id="minDistance" placeholder="Min" oninput="sortAndFilterIdeas()">
+      <input type="number" id="maxDistance" placeholder="Max" oninput="sortAndFilterIdeas()">
     </div>
+
     <div id="ideasContainer" class="ideas-container"></div>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>
