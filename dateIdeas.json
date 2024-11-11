@@ -1,34 +1,34 @@
 [
   {
-    "name": "Hiking",
-    "price": 0,
-    "distance": 10,
-    "time": 4,
-    "energy": "High",
-    "description": "A scenic hiking experience with beautiful views."
-  },
+      "name": "Botanical Gardens",
+      "price": 80,
+      "distance": 4,
+      "time": 1.5,
+      "energy": "Medium",
+      "description": "Need to go on bike, might have to buy snacks, 30 min for to and fro travel time"
+    },
+    {
+      "name": "Bike teaching",
+      "price": 0,
+      "distance": 0,
+      "time": 1,
+      "energy": "Medium",
+      "description": "Can be taught in hostel road, can be combined with other activities such as snack"
+    },
   {
-    "name": "Movie Night",
-    "price": 15,
-    "distance": 2,
-    "time": 2,
-    "energy": "Low",
-    "description": "Relax with a cozy movie night at your favorite theater."
-  },
-  {
-    "name": "Cooking Class",
-    "price": 50,
-    "distance": 5,
-    "time": 3,
-    "energy": "Medium",
-    "description": "Learn new recipes and cooking techniques together."
-  },
-  {
-    "name": "Beach Day",
-    "price": 0,
-    "distance": 15,
-    "time": 6,
-    "energy": "Medium",
-    "description": "Enjoy a sunny day at the beach with fun activities."
-  }
+      "name": "Movie in theatre",
+      "price": 500,
+      "distance": 3,
+      "time": 3.5,
+      "energy": "Low",
+      "description": "Might cost more for snacks if needed. The time is for amb/atrium/preston theatres. Theatres that are far will need more time."
+    },
+    {
+      "name": "Cycling",
+      "price": 100,
+      "distance": 8.5,
+      "time": 2,
+      "energy": "High",
+      "description": "Preferably done based on the weather, morning or evening. Can be combined with breakfast if needed. Geared cycles will cost more. Travel to there by bike."
+    }
 ]
