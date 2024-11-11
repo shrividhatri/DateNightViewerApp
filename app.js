@@ -3,7 +3,7 @@ let dateIdeas = [];
 // Fetch date ideas from the JSON file
 async function fetchDateIdeas() {
   try {
-    const response = await fetch('ideas.json');
+    const response = await fetch('dateIdeas.json');
     if (response.ok) {
       dateIdeas = await response.json();
       sortAndFilterIdeas(); // Initial render with fetched data
@@ -24,8 +24,8 @@ function renderDateIdeas(ideas) {
     ideaCard.className = "idea-card";
     ideaCard.innerHTML = `
       <h2>${idea.name}</h2>
-      <p>Price: Rs ${idea.price}</p>
-      <p>Distance: ${idea.distance} km</p>
+      <p>Price: $${idea.price}</p>
+      <p>Distance: ${idea.distance} miles</p>
       <p>Time: ${idea.time} hours</p>
       <p>Energy: ${idea.energy}</p>
       <button onclick="toggleDescription(${index})">Show Description</button>
