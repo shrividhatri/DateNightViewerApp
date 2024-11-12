@@ -24,8 +24,8 @@ function renderDateIdeas(ideas) {
     ideaCard.className = "idea-card";
     ideaCard.innerHTML = `
       <h2>${idea.name}</h2>
-      <p>Price: $${idea.price}</p>
-      <p>Distance: ${idea.distance} miles</p>
+      <p>Price: Rs ${idea.price}</p>
+      <p>Distance: ${idea.distance} km</p>
       <p>Time: ${idea.time} hours</p>
       <p>Energy: ${idea.energy}</p>
       <button onclick="toggleDescription(${index})">Description</button>
