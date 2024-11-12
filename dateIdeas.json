@@ -24,6 +24,30 @@
       "description": "Might cost more for snacks if needed. The time is for amb/atrium/preston theatres. Theatres that are far will need more time."
     },
     {
+      "name": "Guitar teaching",
+      "price": 0,
+      "distance": 1,
+      "time": 1,
+      "energy": "High",
+      "description": "Guitar needs to be be carried. Can be taught or simply played. Can be done on microsoft road"
+    },
+    {
+      "name": "Shilparamam",
+      "price": 120,
+      "distance": 7,
+      "time": 2,
+      "energy": "Medium",
+      "description": "Might cost more for boating. Snacks are additional. Need bike for transport"
+    },
+    {
+      "name": "Golconda Fort",
+      "price": 50,
+      "distance": 12,
+      "time": 3,
+      "energy": "High",
+      "description": "Will need to check the weather and timings are restricted"
+    },
+    {
       "name": "Cycling",
       "price": 100,
       "distance": 8.5,
